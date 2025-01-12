@@ -1,4 +1,10 @@
 {
+  "name": "Products_Service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "amqplib": "^0.10.5",
     "axios": "^1.7.9",

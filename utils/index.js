@@ -40,7 +40,7 @@ module.exports.formatResponse = (data) => {
   }
 };
 
-module.exports.createChannel = async () => {
+module.exports.CreateChannel = async () => {
   try {
     const connection = await amqplib.connect(process.env.MESSAGE_BROKER_URL);
     const channel = await connection.createChannel();
@@ -53,7 +53,7 @@ module.exports.createChannel = async () => {
   }
 };
 
-module.exports.publishMessage = (channel, bindingKey, msg) => {
+module.exports.PublishMessage = (channel, bindingKey, msg) => {
   try {
     channel.publish(process.env.EXCHANGE_NAME, bindingKey, Buffer.from(msg));
     console.log('Message Published');
@@ -63,7 +63,7 @@ module.exports.publishMessage = (channel, bindingKey, msg) => {
   }
 };
 
-module.exports.subscribeMessage = async (channel, service) => {
+module.exports.SubscribeMessage = async (channel, service) => {
   const appQueue = await channel.assertQueue(process.env.QUEUE_NAME, {
     durable: true,
   });

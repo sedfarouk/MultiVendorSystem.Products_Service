@@ -16,7 +16,7 @@ const productRoutes = (app, channel) => {
     }
   });
 
-  app.post("/product/create", isSeller, async (req, res) => {
+  app.post("/product/create", async (req, res) => {
     const { name, description, image, category, inventoryCount, price, available } = req.body;
     const merchant = req.user._id;
     const { data } = await service.createProduct({
@@ -32,7 +32,7 @@ const productRoutes = (app, channel) => {
     return res.json(data);
   });
 
-  app.put("/product/:id", isSeller, async (req, res) => {
+  app.put("/product/:id", async (req, res) => {
     const productId = req.params.id;
     const { name, description, image, category, inventoryCount, price, available } = req.body;
     const merchant = req.user._id;
@@ -59,7 +59,7 @@ const productRoutes = (app, channel) => {
     }
   });
 
-  app.delete("/product/:id", isSeller, async (req, res) => {
+  app.delete("/product/:id", async (req, res) => {
     const productId = req.params.id;
 
     const foundProduct = await Product.findById(productId);
